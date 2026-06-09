@@ -31,4 +31,11 @@ class CashRegister:
     self.total += line_total
         
     # Add the item name to the items list
-    self.items.append(item)        
+    self.items.append(item)    
+# Record the transaction breakdown as a dictionary
+    transaction = {
+      "item": item,
+      "price": price,
+      "quantity": quantity
+      }
+    self.previous_transactions.append(transaction)        
