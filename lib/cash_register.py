@@ -53,3 +53,13 @@ class CashRegister:
     if not self.previous_transactions:
       print("There is no discount to apply.")
       return
+  # Remove the last recorded transaction dictionary
+      last_tx = self.previous_transactions.pop()
+        
+      # Subtract the calculated line item price out of the running total
+      tx_total = last_tx["price"] * last_tx["quantity"]
+      self.total -= tx_total
+        
+      # Remove the item name string out of the items list
+      if last_tx["item"] in self.items:
+        self.items.remove(last_tx["item"])
