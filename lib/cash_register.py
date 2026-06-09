@@ -31,7 +31,8 @@ class CashRegister:
     self.total += line_total
         
     # Add the item name to the items list
-    self.items.append(item)    
+    for _ in range(quantity):
+      self.items.append(item)    
 # Record the transaction breakdown as a dictionary
     transaction = {
       "item": item,
@@ -45,21 +46,27 @@ class CashRegister:
     if self.discount > 0:
       discount_amount = self.total * (self.discount / 100)
       self.total -= discount_amount
-      # Often labs expect returning or printing the updated total
+      print(f"Discount applied successfully! New total is: {self.total}")
       return self.total       
+    else:
+        #Prints a string error message that there is no discount to apply
+      print("There is no discount to apply.")
     
 # Method: Void Last Transaction
   def void_last_transaction(self):
     if not self.previous_transactions:
-      print("There is no discount to apply.")
+      print("No discount to void.")
       return
   # Remove the last recorded transaction dictionary
-      last_tx = self.previous_transactions.pop()
+    last_tx = self.previous_transactions.pop()
         
-      # Subtract the calculated line item price out of the running total
-      tx_total = last_tx["price"] * last_tx["quantity"]
-      self.total -= tx_total
+    # Subtract the calculated line item price out of the running total
+    tx_total = last_tx["price"] * last_tx["quantity"]
+    self.total -= tx_total
         
-      # Remove the item name string out of the items list
-      if last_tx["item"] in self.items:
-        self.items.remove(last_tx["item"])
+    # Remove the item name string out of the items list
+    if last_tx["item"] in self.items:
+      self.items.remove(last_tx["item"])
+    # Enforce clean floating-point reset if everything is cleared out
+    if not self.items:
+      self.total = 0.0
