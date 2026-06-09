@@ -24,3 +24,11 @@ class CashRegister:
           self._discount = 0
       else:
         self._discount = value  
+  # Method: Add Item
+  def add_item(self, item, price, quantity=1):
+    # Calculate the total cost for this transaction line item
+    line_total = price * quantity
+    self.total += line_total
+        
+    # Add the item name to the items list
+    self.items.append(item)        
