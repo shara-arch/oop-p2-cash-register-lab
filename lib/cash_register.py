@@ -6,3 +6,6 @@ class CashRegister:
         self.total = 0.0
         self.items = []
         self.previous_transactions = []
+
+        # Initializing via the setter property ensures validation occurs immediately
+        self.discount = discount
