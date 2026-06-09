@@ -9,3 +9,9 @@ class CashRegister:
 
         # Initializing via the setter property ensures validation occurs immediately
         self.discount = discount
+
+  # Getter for discount
+  @property
+  def discount(self):
+    return self._discount
+  
