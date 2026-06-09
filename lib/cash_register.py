@@ -47,3 +47,9 @@ class CashRegister:
       self.total -= discount_amount
       # Often labs expect returning or printing the updated total
       return self.total       
+    
+# Method: Void Last Transaction
+  def void_last_transaction(self):
+    if not self.previous_transactions:
+      print("There is no discount to apply.")
+      return
