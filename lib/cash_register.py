@@ -15,3 +15,12 @@ class CashRegister:
   def discount(self):
     return self._discount
   
+# Setter for discount (Handles validation)
+  @discount.setter
+  def discount(self, value):
+      if not isinstance(value, int) or not (0 <= value <= 100):
+          print("Not valid discount")
+          # If invalid initialization happens, we fall back to a safe default of 0
+          self._discount = 0
+      else:
+        self._discount = value  
