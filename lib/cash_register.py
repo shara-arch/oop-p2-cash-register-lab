@@ -38,4 +38,12 @@ class CashRegister:
       "price": price,
       "quantity": quantity
       }
-    self.previous_transactions.append(transaction)        
+    self.previous_transactions.append(transaction) 
+
+# Method: Apply Discount
+  def apply_discount(self):
+    if self.discount > 0:
+      discount_amount = self.total * (self.discount / 100)
+      self.total -= discount_amount
+      # Often labs expect returning or printing the updated total
+      return self.total       
